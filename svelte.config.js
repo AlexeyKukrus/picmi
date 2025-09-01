@@ -9,12 +9,7 @@ const config = {
 
 	kit: {
 		// Using Vercel adapter for deployment
-		adapter: adapter({
-			// Vercel configuration
-			runtime: 'nodejs18.x',
-			// Disable edge functions for better compatibility
-			edge: false
-		})
+		adapter: adapter()
 	}
 };
 
