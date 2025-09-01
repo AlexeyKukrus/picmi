@@ -1,0 +1,122 @@
+@import './tokens.css';
+
+/* Local fonts */
+@font-face {
+	font-family: 'Broukha';
+	src: url('/assets/fonts/Broukha-Display.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: var(--font-sans);
+	color: var(--color-text);
+	background: var(--color-surface);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+	width: min(var(--container-max), 92%);
+	margin: 0 auto;
+}
+
+.section {
+	padding: var(--section-padding-y) 0;
+}
+
+.wave-purple {
+	background: url('/static/assets/backgrounds/violet_waves.png');
+	width: 100%;
+	max-height: 960px;
+}
+
+.wave-green {
+	background: var(--color-bg-green);
+	background-image: radial-gradient(
+		100% 100% at 50% 0%,
+		rgba(255, 255, 255, 0.7) 0,
+		rgba(255, 255, 255, 0) 60%
+	);
+}
+
+button.primary {
+	background: var(--color-primary);
+	color: white;
+	border: none;
+	padding: 12px 18px;
+	border-radius: var(--radius-full);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+button.ghost {
+	background: transparent;
+	border: 1px solid var(--color-border);
+	padding: 10px 16px;
+	border-radius: var(--radius-full);
+}
+
+/* Simple grid helpers */
+.grid-4 {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--space-8);
+}
+
+@media (max-width: 960px) {
+	.grid-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.grid-4 {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Typography utility classes */
+.broukha-normal-64 {
+	font-family: var(--font-decorative);
+	font-weight: 400;
+	font-size: 64px;
+}
+.broukha-normal-36 {
+	font-family: var(--font-decorative);
+	font-weight: 400;
+	font-size: 64px;
+}
+.broukha-normal-300 {
+	font-family: var(--font-decorative);
+	font-weight: 400;
+	font-size: 300px;
+}
+
+.inter-semibold-20 {
+	font-family: var(--font-sans);
+	font-weight: 500;
+	font-size: 20px;
+}
+.inter-bold-80 {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 80px;
+}

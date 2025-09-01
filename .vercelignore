@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.svelte-kit/
+build/
+dist/
+
+# Development files
+*.log
+.env.local
+.env.development.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+e2e/
+test-results/
+coverage/
+
+# Git
+.git/
+.gitignore
