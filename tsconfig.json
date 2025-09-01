@@ -1,5 +1,4 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
@@ -9,11 +8,20 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler"
-	}
-	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
-	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
-	//
-	// To make changes to top-level options such as include and exclude, we recommend extending
-	// the generated config; see https://svelte.dev/docs/kit/configuration#typescript
+		"moduleResolution": "bundler",
+		"target": "ES2020",
+		"module": "ESNext",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"include": [
+		"src/**/*",
+		"src/**/*.d.ts"
+	],
+	"exclude": [
+		"node_modules/*",
+		".svelte-kit/*"
+	]
 }
