@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	// Shop
 
+	import { goto } from '$app/navigation';
 	import { ProductsListDataOption, type Product } from '$lib/helpers/helpers-data-options';
 	import { onMount } from 'svelte';
 
@@ -34,12 +33,6 @@
 		const maxIndex = Math.max(0, itemsCounter - Math.ceil(itemsPerView));
 		if (current > maxIndex) current = maxIndex;
 	};
-
-	onMount(() => {
-		updateItemsPerView();
-		window.addEventListener('resize', updateItemsPerView);
-		return () => window.removeEventListener('resize', updateItemsPerView);
-	});
 
 	const next = () => {
 		if (current < itemsCounter - Math.ceil(itemsPerView)) current++;
@@ -79,6 +72,12 @@
 	const handleSlideClick = (item: Product) => {
 		goto(`/store/${item.id}/card`);
 	};
+
+	onMount(() => {
+		updateItemsPerView();
+		window.addEventListener('resize', updateItemsPerView);
+		return () => window.removeEventListener('resize', updateItemsPerView);
+	});
 </script>
 
 <section class="shop">
@@ -155,7 +154,6 @@
 		gap: 20px;
 	}
 
-	/* Базовые кнопки */
 	.btn {
 		cursor: pointer;
 		border-radius: 40px;
@@ -244,7 +242,6 @@
 		width: fit-content;
 	}
 
-	/* Медиа запросы — укороченные, без дубликатов */
 	@media (max-width: 1700px) {
 		.shop {
 			max-width: 1380px;

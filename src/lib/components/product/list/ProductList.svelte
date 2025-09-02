@@ -1,4 +1,6 @@
 <script lang="ts">
+	// ProductList
+
 	import { goto } from '$app/navigation';
 	import { ProductsListDataOption, type Product } from '$lib/helpers/helpers-data-options';
 	import { onMount } from 'svelte';
@@ -19,47 +21,30 @@
 
 	let isMobile = false;
 
-	// Определяем количество элементов для текущего устройства
-	$: currentItemsPerPage = isMobile ? ITEMS_PER_PAGE_MOBILE : ITEMS_PER_PAGE_DESKTOP;
+	$: currentItemsPerPage = isMobile 
+		? ITEMS_PER_PAGE_MOBILE 
+		: ITEMS_PER_PAGE_DESKTOP;
 
-	onMount(() => {
-		const checkMobile = () => {
-			const wasMobile = isMobile;
-			isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
-
-			if (wasMobile !== isMobile) {
-				displayedItems = currentItemsPerPage;
-				currentPage = 1;
-			}
-		};
-
-		checkMobile();
-		window.addEventListener('resize', checkMobile);
-
-		return () => window.removeEventListener('resize', checkMobile);
-	});
-
-	function changeCategory(categoryId: string) {
+	const changeCategory = (categoryId: string): void => {
 		currentCategory = categoryId;
 		currentPage = 1;
 		displayedItems = currentItemsPerPage;
 	}
 
-	function changePage(page: number) {
+	const changePage = (page: number): void => {
 		currentPage = page;
 		displayedItems = page * currentItemsPerPage;
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
-	function loadMore() {
+	const loadMore = (): void => {
 		displayedItems += currentItemsPerPage;
 	}
 
-	function goToProduct(product: Product) {
+	const goToProduct = (product: Product): void  => {
 		goto(`/store/${product.id}/card`);
 	}
 
-	// Фильтрация продуктов по категориям
 	$: filteredProducts = ProductsListDataOption.filter((product) => {
 		const title = product.title.toLowerCase();
 
@@ -81,11 +66,28 @@
 
 	$: totalPages = Math.ceil(filteredProducts.length / currentItemsPerPage);
 	$: currentProducts = isMobile
-		? filteredProducts.slice(0, displayedItems) // Mobile: load more
+		? filteredProducts.slice(0, displayedItems)
 		: filteredProducts.slice(
 				(currentPage - 1) * currentItemsPerPage,
 				currentPage * currentItemsPerPage
-			); // Desktop: paginate
+			);
+
+	onMount(() => {
+		const checkMobile = () => {
+			const wasMobile = isMobile;
+			isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+			if (wasMobile !== isMobile) {
+				displayedItems = currentItemsPerPage;
+				currentPage = 1;
+			}
+		};
+
+		checkMobile();
+		window.addEventListener('resize', checkMobile);
+
+		return () => window.removeEventListener('resize', checkMobile);
+	});
 </script>
 
 <div class="catalogue-header">
@@ -278,7 +280,6 @@
 		transform: translateY(-2px);
 	}
 
-	/* Tablet - 3 элемента в строке */
 	@media (max-width: 1290px) {
 		.product-card {
 			flex: 0 0 calc(33.333% - 20px);
@@ -286,7 +287,6 @@
 		}
 	}
 
-	/* Small tablet - 2 элемента в строке */
 	@media (max-width: 980px) {
 		.product-card {
 			flex: 0 0 calc(50% - 15px);
@@ -294,7 +294,6 @@
 		}
 	}
 
-	/* Mobile - 1 элемент в строке */
 	@media (max-width: 670px) {
 		.catalogue-title {
 			font-size: 36px;
