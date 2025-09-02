@@ -233,10 +233,10 @@
 		cursor: pointer;
 	}
 	.hero-button:hover {
-		color: #968AF2;
+		color: #968af2;
 	}
 	.hero-button:active {
-		color: #6D61C9;
+		color: #6d61c9;
 	}
 	.hero-button span {
 		width: 100%;
@@ -245,10 +245,10 @@
 		border-radius: 40px;
 	}
 	.hero-button:hover span {
-		border: 2px solid #968AF2;
+		border: 2px solid #968af2;
 	}
 	.hero-button:active span {
-		border: 2px solid #6D61C9;
+		border: 2px solid #6d61c9;
 	}
 
 	@media (max-width: 1700px) {
