@@ -6,7 +6,7 @@
 		<div class="nav-columns">
 			<div class="column">
 				<h4 class="column-title">MAIN MENU</h4>
-				<a href="/home">Home</a>
+				<a href="/">Home</a>
 				<a href="/store">Store</a>
 				<a href="/wholesale">Wholesale</a>
 				<a href="/coa">COA</a>

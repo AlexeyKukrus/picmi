@@ -44,7 +44,7 @@
 <div class="product-page">
 	<main class="main-content">
 		<div class="breadcrumb">
-			<a href="/home">HOME</a> • <a href="/store">STORE</a> • <span>{product.title}</span>
+			<a href="/">HOME</a> • <a href="/store">STORE</a> • <span>{product.title}</span>
 		</div>
 		<ProductCard {product} />
 		<Subscription />
