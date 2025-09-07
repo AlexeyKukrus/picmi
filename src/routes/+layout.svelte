@@ -40,6 +40,5 @@
 	<AgeGate on:confirm={onConfirm} />
 {/if}
 
-{#if $page.url.pathname !== '/'}
-	<Footer />
-{/if}
+<Footer />
+

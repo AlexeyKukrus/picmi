@@ -51,7 +51,9 @@
 <section class="history" aria-label="History" bind:this={historyElement} on:mousemove={handleMouseMove}>
 	<h2 class="history-title">Picmi story starts here</h2>
 	<div class="history-description">
-		<p></p>
+		<p class="history-description-text">We're driven by a singular vision: to unlock the full potential of the human mind and empower individuals to reach new heights 
+			of mental clarity, focus, and awareness. Learn how we're redefining what it means 
+			to enhance cognitive function naturally.</p>
 	</div>
 	<button class="history-button">
 		<span>READ THE FULL STORY</span>
@@ -126,6 +128,19 @@
 		left: 50%;
 		transform: translate(-50%, -50%) rotate(-2deg);
 		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.history-description-text {
+		font-family: var(--font-sans);
+		font-size: 20px;
+		font-weight: 400;
+		color: #ffffff;
+		line-height: 1.5;
+		max-width: 90%;
+		text-align: center;
+		margin: auto;
 	}
 	.history-button {
 		width: 299px;
@@ -162,6 +177,10 @@
 			width: 330px;
 			height: 216px;
 			z-index: 10;
+		}
+		.history-description-text {
+			font-size: 16px;
+			line-height: 1.5;
 		}
 	}
 

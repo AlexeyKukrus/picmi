@@ -40,6 +40,8 @@
 		background: #111111;
 		color: #e7e7e7;
 		padding: 40px 0 24px 0;
+		border-top-left-radius: 48px;
+		border-top-right-radius: 48px;
 	}
 
 	.top {
@@ -117,7 +119,7 @@
 			padding-bottom: 24px;
 		}
 		.brand { text-align: left; }
-		.brand-logo { width: 220px; }
+		.brand-logo { width: 380px; }
 
 		.nav-columns { grid-template-columns: 1fr 1fr; gap: 24px; }
 		.column a { font-size: 16px; margin: 10px 0; }
