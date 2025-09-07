@@ -21,29 +21,27 @@
 
 	let isMobile = false;
 
-	$: currentItemsPerPage = isMobile 
-		? ITEMS_PER_PAGE_MOBILE 
-		: ITEMS_PER_PAGE_DESKTOP;
+	$: currentItemsPerPage = isMobile ? ITEMS_PER_PAGE_MOBILE : ITEMS_PER_PAGE_DESKTOP;
 
 	const changeCategory = (categoryId: string): void => {
 		currentCategory = categoryId;
 		currentPage = 1;
 		displayedItems = currentItemsPerPage;
-	}
+	};
 
 	const changePage = (page: number): void => {
 		currentPage = page;
 		displayedItems = page * currentItemsPerPage;
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
+	};
 
 	const loadMore = (): void => {
 		displayedItems += currentItemsPerPage;
-	}
+	};
 
-	const goToProduct = (product: Product): void  => {
+	const goToProduct = (product: Product): void => {
 		goto(`/store/${product.id}/card`);
-	}
+	};
 
 	$: filteredProducts = ProductsListDataOption.filter((product) => {
 		const title = product.title.toLowerCase();

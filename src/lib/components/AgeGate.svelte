@@ -1,20 +1,39 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte';
+	import { browser } from '$app/environment';
+	import { fade, scale } from 'svelte/transition';
+
+	const dispatch = createEventDispatcher<{ confirm: void; deny: void }>();
 
 	function handleConfirm() {
-		goto('/home');
+		if (browser) sessionStorage.setItem('isConfirmedUser', 'true');
+		dispatch('confirm');
 	}
 
 	function handleDeny() {
-		console.log('click Not quite yet');
+		dispatch('deny');
+		if (typeof window !== 'undefined') {
+			try {
+				window.open('', '_self');
+				window.close();
+			} catch {}
+		}
 	}
 </script>
 
-<section class="age-gate">
-	<div class="card">
-		<div>
-			<img src="/assets/icons/logo.png" class="brand" alt="picmi" />
-		</div>
+<div
+	class="overlay"
+	role="dialog"
+	aria-modal="true"
+	in:fade={{ duration: 1000 }}
+	out:fade={{ duration: 1000 }}
+>
+	<div
+		class="modal"
+		in:scale={{ duration: 1000, start: 0.96 }}
+		out:scale={{ duration: 1000, start: 0.96 }}
+	>
+		<img src="/assets/icons/logo.png" class="brand" alt="picmi" />
 		<h1 class="title broukha-normal-64">We're going to need to see some ID</h1>
 		<div class="actions">
 			<button class="btn btn-primary inter-semibold-20" on:click={handleConfirm}>I’M OVER 21</button
@@ -24,98 +43,83 @@
 			>
 		</div>
 	</div>
-	<style>
-		.age-gate {
-			position: relative;
-			display: grid;
-			place-items: center;
-			min-height: 100dvh;
-			padding: 24px;
-			background-image: url('/assets/backgrounds/violet_waves.png');
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			overflow: hidden;
-		}
+</div>
 
-		.card {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			max-width: 760px;
-			border-radius: 24px;
-			padding: 40px 28px;
-			text-align: center;
-			align-items: center;
-			gap: 64px;
-		}
-
-		.brand {
-			font-weight: 800;
-			font-size: 28px;
-			color: #6b5bd6;
-			margin-bottom: 16px;
-			text-transform: lowercase;
-			letter-spacing: 0.5px;
-		}
-
-		.title {
-			margin: 0;
-			line-height: 1;
-			color: #7262e5;
-		}
-
-		.actions {
-			display: flex;
+<style>
+	.overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(8, 14, 40, 0.8);
+		display: grid;
+		place-items: center;
+		z-index: 9999;
+	}
+	.modal {
+		width: 60vw;
+		height: 60vh;
+		max-width: 1000px;
+		max-height: 720px;
+		min-width: 320px;
+		min-height: 320px;
+		border-radius: 24px;
+		padding: 40px 28px;
+		text-align: center;
+		background-image: url('/assets/backgrounds/violet_waves.png');
+		background-size: cover;
+		border: 1px solid rgba(107, 70, 255, 0.25);
+		backdrop-filter: blur(1.2px) contrast(101%);
+		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
+		box-shadow: var(--shadow-soft);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 32px;
+	}
+	@media (max-width: 768px) {
+		.modal {
+			width: 92vw;
+			height: auto;
+			padding: 28px 22px;
 			gap: 24px;
-			justify-content: center;
-			flex-wrap: wrap;
 		}
-
-		.btn {
-			appearance: none;
-			border: 0;
-			border-radius: 999px;
-			padding: 16px 40px;
-			cursor: pointer;
-			transition:
-				transform 0.06s ease,
-				box-shadow 0.2s ease,
-				background 0.2s ease;
+		.title {
+			font-size: 36px;
 		}
-
-		.btn:active {
-			transform: translateY(1px);
-		}
-
-		.btn-primary {
-			background: #8273ef;
-			color: #fff;
-			box-shadow: 0 6px 16px rgba(119, 101, 243, 0.3);
-		}
-		.btn-primary:hover {
-			background: #6b5bd6;
-		}
-
-		.btn-secondary {
-			background: rgba(255, 255, 255, 0.5);
-			color: #8273ef;
-			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-		}
-		.btn-secondary:hover {
-			background: #f4f1ff;
-		}
-		@media (max-width: 600px) {
-			.card {
-				gap: 48px;
-			}
-			.title {
-				font-size: 36px;
-			}
-			.btn {
-				width: 100%;
-			}
-		}
-	</style>
-</section>
+	}
+	.brand {
+		height: 28px;
+	}
+	.title {
+		margin: 0;
+		line-height: 1;
+		color: #7262e5;
+	}
+	.actions {
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.btn {
+		appearance: none;
+		border: 0;
+		border-radius: 999px;
+		padding: 16px 40px;
+		cursor: pointer;
+	}
+	.btn-primary {
+		background: #8273ef;
+		color: #fff;
+	}
+	.btn-primary:hover {
+		background: #6b5bd6;
+	}
+	.btn-secondary {
+		background: rgba(255, 255, 255, 0.5);
+		color: #8273ef;
+	}
+	.btn-secondary:hover {
+		background: #f4f1ff;
+	}
+</style>

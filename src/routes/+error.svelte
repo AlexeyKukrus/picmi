@@ -2,16 +2,11 @@
 	import { page } from '$app/stores';
 </script>
 
-<svelte:head>
-	<title>404 - Страница не найдена</title>
-</svelte:head>
-
 <div class="error-page">
-	<div class="error-content">
-		<h1 class="error-title">404</h1>
-		<h2 class="error-subtitle">НЕ НАЙДЕНО!!!</h2>
-		<p class="error-description">Страница, которую вы ищете, не существует.</p>
-		<a href="/" class="home-link">Вернуться на главную</a>
+	<div class="hero-title">
+		<div class="title-line text-left">Page</div>
+		<div class="title-line text-center">404</div>
+		<div class="title-line text-right">not found</div>
 	</div>
 </div>
 
@@ -21,78 +16,78 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+		background-image: url('/assets/backgrounds/hero.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		font-family: Arial, sans-serif;
 	}
 
-	.error-content {
-		text-align: center;
-		padding: 40px;
-		background: white;
-		border-radius: 20px;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-		max-width: 500px;
+	.hero-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 10;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		max-width: 600px;
 	}
-
-	.error-title {
-		font-size: 120px;
-		font-weight: 900;
-		color: #8273ef;
-		margin: 0;
-		line-height: 1;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	.title-line {
+		color: #fff;
+		width: 100%;
 	}
-
-	.error-subtitle {
-		font-size: 36px;
+	.text-left {
+		text-align: left;
+		align-self: flex-start;
+		font-family: var(--font-sans);
 		font-weight: 700;
-		color: #333;
-		margin: 20px 0;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		font-size: 80px;
 	}
-
-	.error-description {
-		font-size: 18px;
-		color: #666;
-		margin: 20px 0 30px 0;
-		line-height: 1.6;
+	.text-center {
+		text-align: center;
+		align-self: center;
+		line-height: 0.8;
+		font-family: var(--font-decorative);
+		font-weight: 400;
+		font-size: 300px;
 	}
-
-	.home-link {
-		display: inline-block;
-		background: #8273ef;
-		color: white;
-		text-decoration: none;
-		padding: 15px 30px;
-		border-radius: 25px;
-		font-weight: 600;
-		font-size: 16px;
-		transition: all 0.3s ease;
-	}
-
-	.home-link:hover {
-		background: #6b5bd6;
-		transform: translateY(-2px);
-		box-shadow: 0 10px 20px rgba(130, 115, 239, 0.3);
+	.text-right {
+		text-align: right;
+		align-self: flex-end;
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: 80px;
 	}
 
 	@media (max-width: 768px) {
-		.error-content {
-			padding: 30px 20px;
-			margin: 20px;
+		.hero-title {
+			max-width: 400px;
 		}
-
-		.error-title {
-			font-size: 80px;
+		.text-left {
+			font-size: 60px;
 		}
-
-		.error-subtitle {
-			font-size: 24px;
+		.text-center {
+			font-size: 200px;
 		}
-
-		.error-description {
-			font-size: 16px;
+		.text-right {
+			font-size: 60px;
+		}
+	}
+	@media (max-width: 500px) {
+		.hero-title {
+			max-width: 256px;
+		}
+		.text-left {
+			font-size: 30px;
+		}
+		.text-center {
+			font-size: 130px;
+		}
+		.text-right {
+			font-size: 30px;
 		}
 	}
 </style>

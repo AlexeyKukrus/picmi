@@ -48,7 +48,7 @@
 	});
 </script>
 
-<section class="hero" bind:this={heroElement} on:mousemove={handleMouseMove}>
+<section class="hero" aria-label="Hero" bind:this={heroElement} on:mousemove={handleMouseMove}>
 	<div class="hero-title">
 		<div class="title-line text-left">Let's make</div>
 		<div class="title-line text-center">MEMORIES</div>
@@ -168,13 +168,12 @@
 		z-index: 30;
 		max-width: 448px;
 		padding: 32px;
-		background: rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(59px);
+		background: rgba(255, 255, 255, 0.14);
+		border: 1px solid rgba(107, 70, 255, 0.25);
 		border-radius: 24px;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		box-shadow:
-			0 8px 32px rgba(0, 0, 0, 0.1),
-			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(1.2px) contrast(101%);
+		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
+		box-shadow: var(--shadow-soft);
 		transform: rotate(-2deg);
 		overflow: hidden;
 		bottom: 100px;

@@ -10,7 +10,7 @@
 <div class="store-page">
 	<main class="main-content">
 		<div class="breadcrumb">
-			<a href="/home">HOME</a> • <span>STORE</span>
+			<a href="/">HOME</a> • <span>STORE</span>
 		</div>
 		<ProductList />
 		<Subscription />
