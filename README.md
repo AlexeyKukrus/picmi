@@ -1,38 +1,114 @@
-# sv
+<div align="center">
+  <h1>Picmi Storefront</h1>
+  <p>Modern SvelteKit storefront with glassy UI, rich content blocks and mobile-first navigation.</p>
+</div>
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+---
 
-## Creating a project
+## 🇬🇧 English
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Overview
 
-```sh
-# create a new project in the current directory
-npx sv create
+Picmi is a SvelteKit-based storefront that showcases products, editorial content and brand storytelling with a clean, animated UI. The codebase is structured for clarity, fast iteration and production deployment.
 
-# create a new project in my-app
-npx sv create my-app
+- SvelteKit 2, Vite 7, TypeScript
+- Modular components – Hero, Shop, History, Articles, Subscription
+- Responsive header with mobile menu (overlay) and Age Gate modal
+- Route-first architecture, easy to extend
+
+### Project Structure
+
+```
+src/
+  lib/
+    components/
+      layout/            # Header, Footer
+      home/              # Page sections (Hero, Shop, History, Articles, ...)
+    styles/              # tokens and globals
+  routes/                # SvelteKit routes (/, /store, /articles, ...)
+static/                  # assets (icons, images, backgrounds)
 ```
 
-## Developing
+Key UX elements:
+- `Header.svelte`: sticky header, burger → full-screen mobile menu
+- `AgeGate.svelte`: session-based age confirmation modal (blocks UI until confirmed)
+- `+layout.svelte`: global wiring (styles, age gate, footer)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Getting Started
 
-```sh
+Prerequisites: Node.js 18+ and npm.
+
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# open http://localhost:5173
 ```
 
-## Building
+### Scripts
 
-To create a production version of your app:
+- `npm run dev` – start the dev server
+- `npm run build` – build production assets
+- `npm run preview` – preview the production build
 
-```sh
-npm run build
+### Deployment
+
+This is a standard SvelteKit app – choose an adapter for your target (Vercel, Node, Static, etc.). Example: `@sveltejs/adapter-vercel` is already included in the repo; see `svelte.config.js` and `vercel.json`.
+
+---
+
+## 🇷🇺 Русский
+
+### Обзор
+
+Picmi — витрина на SvelteKit с современным интерфейсом, где сочетаются продуктовые карточки, редакционный контент и бренд‑истории. Код организован так, чтобы упрощать поддержку, расширение и деплой.
+
+- SvelteKit 2, Vite 7, TypeScript
+- Модульные компоненты: Hero, Shop, History, Articles, Subscription
+- Адаптивный хедер с полноэкранным мобильным меню
+- Модальное окно Age Gate (проверка возраста)
+
+### Структура проекта
+
+```
+src/
+  lib/
+    components/
+      layout/            # Header, Footer
+      home/              # Блоки главной (Hero, Shop, History, Articles, ...)
+    styles/              # токены и глобальные стили
+  routes/                # Роуты SvelteKit (/, /store, /articles, ...)
+static/                  # ассеты (иконки, изображения, фоны)
 ```
 
-You can preview the production build with `npm run preview`.
+Основные элементы UX:
+- `Header.svelte`: закреплённый хедер, бургер → полноэкранное мобильное меню
+- `AgeGate.svelte`: модалка с подтверждением возраста, блокирует страницу до подтверждения
+- `+layout.svelte`: глобальные стили, модалка, футер
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Быстрый старт
+
+Требования: Node.js 18+ и npm.
+
+```bash
+npm install
+npm run dev
+# откройте http://localhost:5173
+```
+
+### Скрипты
+
+- `npm run dev` — запуск локального сервера
+- `npm run build` — продакшн-сборка
+- `npm run preview` — предпросмотр продакшн-сборки
+
+
+### Деплой
+
+Это стандартное приложение SvelteKit. В репозитории деплой на Vercel — см. `svelte.config.js` и `vercel.json`.
+
+---
+
+### License / Лицензия
+
+This project is provided “as is” for demonstration and educational purposes.
+Проект предоставляется «как есть» для демонстрационных и учебных целей.
