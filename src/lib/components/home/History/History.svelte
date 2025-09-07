@@ -48,7 +48,7 @@
 	});
 </script>
 
-<section class="history" bind:this={historyElement} on:mousemove={handleMouseMove}>
+<section class="history" aria-label="History" bind:this={historyElement} on:mousemove={handleMouseMove}>
 	<h2 class="history-title">Picmi story starts here</h2>
 	<div class="history-description">
 		<p></p>
@@ -116,10 +116,15 @@
 	.history-description {
 		width: 482px;
 		height: 284px;
-		background-image: url('/assets/backgrounds/history_card.png');
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(107, 70, 255, 0.25);
+		border-radius: 24px;
+		backdrop-filter: blur(1.2px) contrast(101%);
+		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
+		box-shadow: var(--shadow-soft);
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%) rotate(-2deg);
 		position: absolute;
 	}
 	.history-button {

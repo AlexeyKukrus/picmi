@@ -359,3 +359,42 @@ export const ProductInfoDataOption: ProductInfo = {
 		ingredients: ['Canvas Material']
 	}
 };
+
+export interface Article {
+	id: number;
+	title: string;
+	background: string;
+}
+
+export const ArticlesListDataOption: Article[] = [
+	{
+		id: 1,
+		title: 'How To Identify An Authentic picmi Bar',
+		background: '/assets/backgrounds/article_blue.png'
+	},
+	{
+		id: 2,
+		title: 'Science-Backed Functional Mushrooms',
+		background: '/assets/backgrounds/article_orange.png'
+	},
+	{
+		id: 3,
+		title: 'Verify Your Product via Blockchain ',
+		background: '/assets/backgrounds/article_violet.png'
+	},
+	{
+		id: 4,
+		title: 'How To Identify An Authentic picmi Bar',
+		background: '/assets/backgrounds/article_blue.png'
+	},
+	{
+		id: 5,
+		title: 'Science-Backed Functional Mushrooms',
+		background: '/assets/backgrounds/article_orange.png'
+	},
+	{
+		id: 6,
+		title: 'Verify Your Product via Blockchain ',
+		background: '/assets/backgrounds/article_violet.png'
+	}
+]
