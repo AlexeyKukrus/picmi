@@ -48,12 +48,19 @@
 	});
 </script>
 
-<section class="history" aria-label="History" bind:this={historyElement} on:mousemove={handleMouseMove}>
+<section
+	class="history"
+	aria-label="History"
+	bind:this={historyElement}
+	on:mousemove={handleMouseMove}
+>
 	<h2 class="history-title">Picmi story starts here</h2>
 	<div class="history-description">
-		<p class="history-description-text">We're driven by a singular vision: to unlock the full potential of the human mind and empower individuals to reach new heights 
-			of mental clarity, focus, and awareness. Learn how we're redefining what it means 
-			to enhance cognitive function naturally.</p>
+		<p class="history-description-text">
+			We're driven by a singular vision: to unlock the full potential of the human mind and empower
+			individuals to reach new heights of mental clarity, focus, and awareness. Learn how we're
+			redefining what it means to enhance cognitive function naturally.
+		</p>
 	</div>
 	<button class="history-button">
 		<span>READ THE FULL STORY</span>

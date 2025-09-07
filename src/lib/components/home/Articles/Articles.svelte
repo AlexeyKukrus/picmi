@@ -63,7 +63,6 @@
 		if (endX > startX + 50) prev();
 	};
 
-	
 	const handleSlideClick = (item: Article) => {
 		goto(`/articles/${item.id}/view`);
 	};
@@ -106,9 +105,6 @@
 					on:click={() => handleSlideClick(p)}
 				>
 					<h3 class="slide-title">{p.title}</h3>
-					<button>
-						LEARN MORE
-					</button>
 				</div>
 			{/each}
 		</div>
@@ -213,16 +209,15 @@
 			width: 50px;
 			height: 50px;
 		}
+		.slide {
+			max-width: 313px;
+			height: 380px;
+		}
 		.slider-wrapper {
 			height: 380px;
 		}
 		.slide-title {
 			font-size: 16px;
-		}
-	}
-	@media (max-width: 1199px) {
-		.slider-wrapper {
-			height: 500px;
 		}
 	}
 	@media (max-width: 991px) {
@@ -241,6 +236,10 @@
 		}
 		.slider-wrapper {
 			height: 420px;
+		}
+		.slide {
+			max-width: 249px;
+			height: 380px;
 		}
 	}
 	@media (max-width: 540px) {

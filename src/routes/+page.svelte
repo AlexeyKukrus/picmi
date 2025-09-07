@@ -15,10 +15,35 @@
 </div>
 
 <style>
-	.page-container { max-width: 1600px; margin: 40px auto 120px auto; }
-	@media (max-width: 1700px) { .page-container { max-width: 1380px; margin: 40px auto; } }
-	@media (max-width: 1400px) { .page-container { max-width: 970px; } }
-	@media (max-width: 991px) { .page-container { max-width: 750px; } }
-	@media (max-width: 768px) { .page-container { max-width: 520px; margin: 30px auto; } }
-	@media (max-width: 540px) { .page-container { max-width: 360px; } }
+	.page-container {
+		max-width: 1600px;
+		margin: 40px auto 120px auto;
+	}
+	@media (max-width: 1700px) {
+		.page-container {
+			max-width: 1380px;
+			margin: 40px auto;
+		}
+	}
+	@media (max-width: 1400px) {
+		.page-container {
+			max-width: 970px;
+		}
+	}
+	@media (max-width: 991px) {
+		.page-container {
+			max-width: 750px;
+		}
+	}
+	@media (max-width: 768px) {
+		.page-container {
+			max-width: 520px;
+			margin: 30px auto;
+		}
+	}
+	@media (max-width: 540px) {
+		.page-container {
+			max-width: 360px;
+		}
+	}
 </style>

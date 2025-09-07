@@ -397,4 +397,4 @@ export const ArticlesListDataOption: Article[] = [
 		title: 'Verify Your Product via Blockchain ',
 		background: '/assets/backgrounds/article_violet.png'
 	}
-]
+];

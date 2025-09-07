@@ -21,13 +21,26 @@
 	}
 </script>
 
-<div class="overlay" role="dialog" aria-modal="true" in:fade={{ duration: 1000 }} out:fade={{ duration: 1000 }}>
-	<div class="modal" in:scale={{ duration: 1000, start: 0.96 }} out:scale={{ duration: 1000, start: 0.96 }}>
+<div
+	class="overlay"
+	role="dialog"
+	aria-modal="true"
+	in:fade={{ duration: 1000 }}
+	out:fade={{ duration: 1000 }}
+>
+	<div
+		class="modal"
+		in:scale={{ duration: 1000, start: 0.96 }}
+		out:scale={{ duration: 1000, start: 0.96 }}
+	>
 		<img src="/assets/icons/logo.png" class="brand" alt="picmi" />
 		<h1 class="title broukha-normal-64">We're going to need to see some ID</h1>
 		<div class="actions">
-			<button class="btn btn-primary inter-semibold-20" on:click={handleConfirm}>I’M OVER 21</button>
-			<button class="btn btn-secondary inter-semibold-20" on:click={handleDeny}>NOT QUITE YET</button>
+			<button class="btn btn-primary inter-semibold-20" on:click={handleConfirm}>I’M OVER 21</button
+			>
+			<button class="btn btn-secondary inter-semibold-20" on:click={handleDeny}
+				>NOT QUITE YET</button
+			>
 		</div>
 	</div>
 </div>
@@ -64,15 +77,49 @@
 		gap: 32px;
 	}
 	@media (max-width: 768px) {
-		.modal { width: 92vw; height: auto; padding: 28px 22px; gap: 24px; }
-		.title { font-size: 36px; }
+		.modal {
+			width: 92vw;
+			height: auto;
+			padding: 28px 22px;
+			gap: 24px;
+		}
+		.title {
+			font-size: 36px;
+		}
 	}
-	.brand { height: 28px; }
-	.title { margin: 0; line-height: 1; color: #7262e5; }
-	.actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-	.btn { appearance: none; border: 0; border-radius: 999px; padding: 16px 40px; cursor: pointer; }
-	.btn-primary { background: #8273ef; color: #fff; }
-	.btn-primary:hover { background: #6b5bd6; }
-	.btn-secondary { background: rgba(255, 255, 255, 0.5); color: #8273ef; }
-	.btn-secondary:hover { background: #f4f1ff; }
+	.brand {
+		height: 28px;
+	}
+	.title {
+		margin: 0;
+		line-height: 1;
+		color: #7262e5;
+	}
+	.actions {
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.btn {
+		appearance: none;
+		border: 0;
+		border-radius: 999px;
+		padding: 16px 40px;
+		cursor: pointer;
+	}
+	.btn-primary {
+		background: #8273ef;
+		color: #fff;
+	}
+	.btn-primary:hover {
+		background: #6b5bd6;
+	}
+	.btn-secondary {
+		background: rgba(255, 255, 255, 0.5);
+		color: #8273ef;
+	}
+	.btn-secondary:hover {
+		background: #f4f1ff;
+	}
 </style>

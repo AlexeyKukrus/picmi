@@ -25,7 +25,22 @@
 	<div class="container disclaimer">
 		<h5>DISCLAIMER</h5>
 		<p>
-			The information provided on this site is for informational purposes only and is not intended as a substitute for advice from your physician or other health care professional or any information contained on or in any product label or packaging. You should not use the information on this site for diagnosis or treatment of any health problem or for prescription of any medication or other treatment. You should consult with a healthcare professional before starting any diet, exercise or supplementation program, before taking any medication, or if you have or suspect you might have a health problem. You should not stop taking any medication without first consulting your physician. If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using this product. This product is not for use by or sale to persons under the age of 18. This product should be used only as directed on the label. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease. Individual weight loss results will vary. Amanita Muscaria is deemed illegal in the state of Louisiana. Products containing Amanita Muscaria must not be shipped to the state of Louisiana. By using this site, you agree to follow the Privacy Policy and all Terms & Conditions printed on this site. Void Where Prohibited by Law.
+			The information provided on this site is for informational purposes only and is not intended
+			as a substitute for advice from your physician or other health care professional or any
+			information contained on or in any product label or packaging. You should not use the
+			information on this site for diagnosis or treatment of any health problem or for prescription
+			of any medication or other treatment. You should consult with a healthcare professional before
+			starting any diet, exercise or supplementation program, before taking any medication, or if
+			you have or suspect you might have a health problem. You should not stop taking any medication
+			without first consulting your physician. If you are pregnant, nursing, taking medication, or
+			have a medical condition, consult your physician before using this product. This product is
+			not for use by or sale to persons under the age of 18. This product should be used only as
+			directed on the label. These statements have not been evaluated by the Food and Drug
+			Administration. This product is not intended to diagnose, treat, cure or prevent any disease.
+			Individual weight loss results will vary. Amanita Muscaria is deemed illegal in the state of
+			Louisiana. Products containing Amanita Muscaria must not be shipped to the state of Louisiana.
+			By using this site, you agree to follow the Privacy Policy and all Terms & Conditions printed
+			on this site. Void Where Prohibited by Law.
 		</p>
 	</div>
 
@@ -118,17 +133,40 @@
 			gap: 28px;
 			padding-bottom: 24px;
 		}
-		.brand { text-align: left; }
-		.brand-logo { width: 380px; }
+		.brand {
+			text-align: left;
+		}
+		.brand-logo {
+			width: 380px;
+		}
 
-		.nav-columns { grid-template-columns: 1fr 1fr; gap: 24px; }
-		.column a { font-size: 16px; margin: 10px 0; }
+		.nav-columns {
+			grid-template-columns: 1fr 1fr;
+			gap: 24px;
+		}
+		.column a {
+			font-size: 16px;
+			margin: 10px 0;
+		}
 
-		.disclaimer { padding-top: 20px; }
-		.disclaimer p { font-size: 12px; line-height: 1.7; }
+		.disclaimer {
+			padding-top: 20px;
+		}
+		.disclaimer p {
+			font-size: 12px;
+			line-height: 1.7;
+		}
 
-		.bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-		.trademark { font-size: 20px; }
-		.rights { font-size: 12px; }
+		.bottom {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 8px;
+		}
+		.trademark {
+			font-size: 20px;
+		}
+		.rights {
+			font-size: 12px;
+		}
 	}
 </style>
