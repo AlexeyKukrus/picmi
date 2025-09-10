@@ -1,6 +1,7 @@
 <script lang="ts">
 	// Hero
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	let heroElement: HTMLElement;
 
@@ -48,7 +49,7 @@
 	});
 </script>
 
-<section class="hero" aria-label="Hero" bind:this={heroElement} on:mousemove={handleMouseMove}>
+<section class="hero" aria-label="Hero" bind:this={heroElement} onmousemove={handleMouseMove}>
 	<div class="hero-title">
 		<div class="title-line text-left">Let's make</div>
 		<div class="title-line text-center">MEMORIES</div>
@@ -56,7 +57,7 @@
 	</div>
 	<div class="title-line text-right together-mobile">together.</div>
 	<img src="/assets/illustrations/hero-choco.png" alt="choco" class="hero-image" />
-	<div class="hero-info">
+	<div class="hero-info liquid-glass">
 		<div class="info-icons">
 			<img src="/assets/icons/web.png" alt="icon-web" class="info-icon" />
 			<img src="/assets/icons/smile.png" alt="icon-smile" class="info-icon" />
@@ -67,7 +68,12 @@
 			functional mushroom ingredients
 		</p>
 	</div>
-	<button class="hero-button">
+	<button
+		class="hero-button"
+		onclick={() => {
+			goto('/store/3/card');
+		}}
+	>
 		<span>VIEW PRODUCT</span>
 	</button>
 </section>
@@ -168,11 +174,9 @@
 		z-index: 30;
 		max-width: 448px;
 		padding: 32px;
-		background: rgba(255, 255, 255, 0.14);
+		background: transparent;
 		border: 1px solid rgba(107, 70, 255, 0.25);
 		border-radius: 24px;
-		backdrop-filter: blur(1.2px) contrast(101%);
-		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
 		box-shadow: var(--shadow-soft);
 		transform: rotate(-2deg);
 		overflow: hidden;
@@ -180,20 +184,27 @@
 		left: 110px;
 	}
 
-	.hero-info::before {
+	/* Glass effect borrowed from History/Header */
+	.liquid-glass { isolation: isolate; }
+	.hero-info.liquid-glass::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(
-			142deg,
-			rgba(255, 255, 255, 0.4) 0%,
-			rgba(255, 255, 255, 0.1) 40%,
-			transparent 100%
-		);
-		pointer-events: none;
+		inset: 0;
+		z-index: 0;
+		border-radius: 24px;
+		box-shadow: inset 0 0 10px -10px #000000;
+		background-color: rgba(255, 255, 255, 0);
+	}
+	.hero-info.liquid-glass::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: 24px;
+		backdrop-filter: blur(0px);
+		-webkit-backdrop-filter: blur(0px);
+		filter: url(#glass-distortion);
+		-webkit-filter: url(#glass-distortion);
 	}
 
 	.info-icons {

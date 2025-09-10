@@ -23,7 +23,7 @@
 </script>
 
 <header class="site-header fixed" class:desktop-dark={isDesktop && $page.url.pathname !== '/'}>
-	<div class="header-wrap" bind:this={wrapEl}>
+	<div class="liquid-glass header-wrap" bind:this={wrapEl}>
 		<nav class="nav">
 			<button
 				class="icon-btn menu"
@@ -66,26 +66,52 @@
 			<div class="nav-left">
 				<a
 					href="/store"
-					class={isDesktop && $page.url.pathname !== '/' && $page.status !== 404 ? 'dark-link' : ''}
+					class={
+						isDesktop &&
+						$page.url.pathname !== '/' &&
+						$page.url.pathname !== '/about' &&
+						$page.status !== 404
+							? 'dark-link'
+							: ''
+					}
 					>STORE</a
 				>
 				<a
 					href="/about"
-					class={isDesktop && $page.url.pathname !== '/' && $page.status !== 404 ? 'dark-link' : ''}
+					class={
+						isDesktop &&
+						$page.url.pathname !== '/' &&
+						$page.url.pathname !== '/about' &&
+						$page.status !== 404
+							? 'dark-link'
+							: ''
+					}
 					>ABOUT</a
 				>
 				<a
 					href="/contact"
-					class={isDesktop && $page.url.pathname !== '/' && $page.status !== 404 ? 'dark-link' : ''}
+					class={
+						isDesktop &&
+						$page.url.pathname !== '/' &&
+						$page.url.pathname !== '/about' &&
+						$page.status !== 404
+							? 'dark-link'
+							: ''
+					}
 					>CONTACT</a
 				>
 			</div>
 
 			<a href="/" class="nav-logo" aria-label="picmi home">
 				<img
-					src={$page.url.pathname !== '/' && $page.status !== 404 && !isMenuOpen
-						? '/assets/icons/logo-black.png'
-						: '/assets/icons/logo.png'}
+					src={
+						$page.url.pathname !== '/' &&
+						$page.url.pathname !== '/about' &&
+						$page.status !== 404 &&
+						!isMenuOpen
+							? '/assets/icons/logo-black.png'
+							: '/assets/icons/logo.png'
+					}
 					alt="picmi"
 				/>
 			</a>
@@ -106,6 +132,28 @@
 			</div>
 		</nav>
 	</div>
+
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<defs>
+			<filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+				<feTurbulence
+					type="fractalNoise"
+					baseFrequency="0.005 0.005"
+					numOctaves="10"
+					seed="100"
+					result="noise"
+				/>
+				<feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+				<feDisplacementMap
+					in="SourceGraphic"
+					in2="blurred"
+					scale="34"
+					xChannelSelector="R"
+					yChannelSelector="G"
+				/>
+			</filter>
+		</defs>
+	</svg>
 
 	<!-- Mobile full-screen menu -->
 	<div
@@ -155,6 +203,7 @@
 			<nav class="mm-links">
 				<a href="/" class="mm-link" onclick={() => (isMenuOpen = false)}>Home</a>
 				<a href="/store" class="mm-link" onclick={() => (isMenuOpen = false)}>Store</a>
+				<a href="/about" class="mm-link" onclick={() => (isMenuOpen = false)}>About</a>
 				<a href="/coa" class="mm-link" onclick={() => (isMenuOpen = false)}>COA</a>
 				<a href="/contact" class="mm-link" onclick={() => (isMenuOpen = false)}>Contact</a>
 			</nav>
@@ -171,6 +220,37 @@
 </header>
 
 <style>
+	.liquid-glass {
+		isolation: isolate;
+	}
+
+	.liquid-glass:focus {
+		outline: none;
+	}
+
+	.liquid-glass::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		border-radius: 56.00000000000001px;
+		box-shadow: inset 0 0 12px -10px #000000;
+		background-color: rgba(255, 255, 255, 0);
+		pointer-events: none;
+	}
+
+	.liquid-glass::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: 56.00000000000001px;
+		backdrop-filter: blur(0px);
+		-webkit-backdrop-filter: blur(0px);
+		filter: url(#glass-distortion);
+		-webkit-filter: url(#glass-distortion);
+		pointer-events: none;
+	}
 	.site-header {
 		position: sticky;
 		top: 12px;
@@ -188,11 +268,6 @@
 		max-width: 1600px;
 		margin: 0 auto;
 		border-radius: 9999px;
-		background: rgba(255, 255, 255, 0.14);
-		border: 1px solid rgba(107, 70, 255, 0.25);
-		backdrop-filter: blur(1.2px) contrast(101%);
-		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
-		box-shadow: var(--shadow-soft);
 		position: relative;
 	}
 
@@ -202,10 +277,8 @@
 		left: 16px;
 		right: 16px;
 		bottom: -10px;
-		height: 18px;
+		height: 100%;
 		border-radius: 9999px;
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0));
-		filter: blur(6px);
 		z-index: -1;
 	}
 
@@ -215,6 +288,8 @@
 		align-items: center;
 		padding: 12px 40px;
 		gap: 12px;
+		position: relative;
+		z-index: 1;
 	}
 	.nav-left {
 		display: flex;

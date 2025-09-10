@@ -398,3 +398,32 @@ export const ArticlesListDataOption: Article[] = [
 		background: '/assets/backgrounds/article_violet.png'
 	}
 ];
+
+export interface Mashroom {
+	title: string;
+	img: string;
+	text: string;
+}
+
+export const AboutMushroomsDataOption: Mashroom[] = [
+	{
+		title: 'Turkey tail',
+		img: '/assets/illustrations/turkey-tail.png',
+		text: 'One of the most researched medicinal mushrooms for its powerful polysaccharides. The beta glucans and bioactive compounds in Turkey Tail support immune health, aid in detoxification, and promote liver function.'
+	},
+	{
+		title: 'Lions mane',
+		img: '/assets/illustrations/lions-mane.png',
+		text: 'Used in Traditional Chinese medicine for digestion and sleep, has significant brain-boosting properties. It promotes the growth and function of nerve cells, supporting cognitive and neurological health. Daily use improves memory, mood, and reduces anxiety and depression.'
+	},
+	{
+		title: 'Reishi',
+		img: '/assets/illustrations/reishi.png',
+		text: 'Known as the "Mushroom of Immortality" in Traditional Chinese Medicine, balances and modulates the immune system, supports cardiovascular health, and acts as a superior adaptogen for mental and physical stress.'
+	},
+	{
+		title: 'Cordyceps',
+		img: '/assets/illustrations/cordyceps.png',
+		text: 'Cordyceps improves vitality and endurance by supporting respiration, energy production, and ATP synthesis. It enhances aerobic endurance in athletes and general vitality in seniors, increases circulation, and enhances male sexual performance and female reproductive health.'
+	}
+];

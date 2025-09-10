@@ -1,6 +1,12 @@
 <script lang="ts">
 	// History
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	export let showButton: boolean = true;
+	export let title: string = 'Picmi story starts here';
+	export let description: string =
+		"We're driven by a singular vision: to unlock the full potential of the human mind and empower individuals to reach new heights of mental clarity, focus, and awareness. Learn how we're redefining what it means to enhance cognitive function naturally.";
 
 	let historyElement: HTMLElement;
 
@@ -52,22 +58,91 @@
 	class="history"
 	aria-label="History"
 	bind:this={historyElement}
-	on:mousemove={handleMouseMove}
+	onmousemove={handleMouseMove}
 >
-	<h2 class="history-title">Picmi story starts here</h2>
-	<div class="history-description">
-		<p class="history-description-text">
-			We're driven by a singular vision: to unlock the full potential of the human mind and empower
-			individuals to reach new heights of mental clarity, focus, and awareness. Learn how we're
-			redefining what it means to enhance cognitive function naturally.
-		</p>
+	<h2 class="history-title">{title}</h2>
+	<div class="liquid-glass">
+		<div class="history-description-text">{description}</div>
 	</div>
-	<button class="history-button">
-		<span>READ THE FULL STORY</span>
-	</button>
+
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<defs>
+			<filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+				<feTurbulence
+					type="fractalNoise"
+					baseFrequency="0.007 0.007"
+					numOctaves="2"
+					seed="92"
+					result="noise"
+				/>
+				<feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+				<feDisplacementMap
+					in="SourceGraphic"
+					in2="blurred"
+					scale="77"
+					xChannelSelector="R"
+					yChannelSelector="G"
+				/>
+			</filter>
+		</defs>
+	</svg>
+	<div class="history-description">
+		<p class="history-description-text">{description}</p>
+	</div>
+	{#if showButton}
+		<button
+			class="history-button"
+			onclick={() => {
+				goto('/about');
+			}}
+		>
+			<span>READ THE FULL STORY</span>
+		</button>
+	{/if}
 </section>
 
 <style>
+	.liquid-glass {
+		width: 482px;
+		height: 284px;
+		border-radius: 24px;
+		position: relative;
+		isolation: isolate;
+		box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(-2deg);
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.liquid-glass:focus {
+		outline: none;
+	}
+
+	.liquid-glass::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		border-radius: 56.00000000000001px;
+		box-shadow: inset 0 0 15px -5px #000000;
+		background-color: rgba(255, 255, 255, 0);
+	}
+
+	.liquid-glass::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: 56.00000000000001px;
+		backdrop-filter: blur(0px);
+		-webkit-backdrop-filter: blur(0px);
+		filter: url(#glass-distortion);
+		-webkit-filter: url(#glass-distortion);
+	}
 	.history {
 		position: relative;
 		width: 100%;
@@ -125,19 +200,6 @@
 	.history-description {
 		width: 482px;
 		height: 284px;
-		background: rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(107, 70, 255, 0.25);
-		border-radius: 24px;
-		backdrop-filter: blur(1.2px) contrast(101%);
-		-webkit-backdrop-filter: blur(1.2px) contrast(101%);
-		box-shadow: var(--shadow-soft);
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) rotate(-2deg);
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 	.history-description-text {
 		font-family: var(--font-sans);

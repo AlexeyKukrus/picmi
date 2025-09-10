@@ -30,6 +30,7 @@ static/                  # assets (icons, images, backgrounds)
 ```
 
 Key UX elements:
+
 - `Header.svelte`: sticky header, burger → full-screen mobile menu
 - `AgeGate.svelte`: session-based age confirmation modal (blocks UI until confirmed)
 - `+layout.svelte`: global wiring (styles, age gate, footer)
@@ -81,6 +82,7 @@ static/                  # ассеты (иконки, изображения, �
 ```
 
 Основные элементы UX:
+
 - `Header.svelte`: закреплённый хедер, бургер → полноэкранное мобильное меню
 - `AgeGate.svelte`: модалка с подтверждением возраста, блокирует страницу до подтверждения
 - `+layout.svelte`: глобальные стили, модалка, футер
@@ -100,7 +102,6 @@ npm run dev
 - `npm run dev` — запуск локального сервера
 - `npm run build` — продакшн-сборка
 - `npm run preview` — предпросмотр продакшн-сборки
-
 
 ### Деплой
 
